@@ -41,12 +41,12 @@ resource "aws_route_table_association" "main" {
 }
 
 resource "aws_subnet" "main" {
-  availability_zone = "${data.aws_availability_zones.current.names[count.index]}"
+  availability_zone = "${var.availability_zones[count.index]}"
   cidr_block        = "${cidrsubnet(aws_vpc.main.cidr_block, 3, count.index)}"
-  count             = "${local.availability_zones_count}"
+  count             = "${var.availability_zones_count}"
 
   tags {
-    Name = "${var.prefix}-${data.aws_availability_zones.current.names[count.index]}"
+    Name = "${var.prefix}-${var.availability_zones[count.index]}"
   }
 
   vpc_id = "${aws_vpc.main.id}"

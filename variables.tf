@@ -3,6 +3,16 @@ variable "cluster_name" {
   type        = "string"
 }
 
+variable "availability_zones" {
+  description = "The List of available zones."
+  type        = "list"
+}
+
+variable "availability_zones_count" {
+  description = "The number of availability zones"
+  type        = "string"
+}
+
 variable "prefix" {
   description = "Prefix for all the resources created"
   default     = ""
